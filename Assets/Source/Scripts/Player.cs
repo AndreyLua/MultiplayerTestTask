@@ -1,11 +1,12 @@
 using UnityEngine;
 
-public class Player : MonoBehaviour, IMoveble, IAttack, IDamageble
+public class Player : MonoBehaviour, IMoveble, IAttack, IDamageble, ICollector
 {
     [SerializeField] private PlayerSkinFactory _playerFactory;
+    [SerializeField] private MoneyStorage _moneyStorage;
 
     private Health _health;
-
+   
     private HealthView _healthView;
     private PlayerView _playerView;
 
@@ -18,13 +19,7 @@ public class Player : MonoBehaviour, IMoveble, IAttack, IDamageble
     public float Damage => _damage;
     public float Rate => _rate;
 
-    public Vector2 Direction =>gameObject.transform.rotation * Vector2.up;
-
-    public void TakeDamage(float damage)
-    {
-        Debug.Log(damage);
-        _health.TakeDamage(damage);
-    }
+    public Vector2 Direction => _playerView.transform.rotation * Vector2.up;
 
     private void Awake()
     {
@@ -39,7 +34,16 @@ public class Player : MonoBehaviour, IMoveble, IAttack, IDamageble
 
     private void OnDamaged()
     {
-        Debug.Log(_health.Value);
         _healthView.UpdateBar(_health);
+    }
+
+    public void TakeDamage(float damage)
+    {
+        _health.TakeDamage(damage);
+    }
+
+    public void TakeMoney(int value)
+    {
+        _moneyStorage.Add(value);
     }
 }

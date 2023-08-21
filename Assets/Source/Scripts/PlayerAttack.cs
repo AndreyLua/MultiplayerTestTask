@@ -20,7 +20,7 @@ public class PlayerAttack : MonoBehaviour
         if (_canAttack)
         {
             _canAttack = false;
-            _bulletFactory.Create(gameObject.transform.position, _attack.Direction, _attack.Damage);
+            _bulletFactory.Create(gameObject.transform.position, _attack.Direction, _attack.Damage, _attack);
             DOTween.Sequence().AppendInterval(_attack.Rate).AppendCallback(() => _canAttack = true);
         }
     }

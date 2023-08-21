@@ -281,6 +281,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4605491775681913640, guid: 5c32145fbb00d4e438773d75399b1755, type: 3}
+      propertyPath: _moneyStorage
+      value: 
+      objectReference: {fileID: 1581329153}
+    - target: {fileID: 4605491775681913640, guid: 5c32145fbb00d4e438773d75399b1755, type: 3}
       propertyPath: _playerFactory
       value: 
       objectReference: {fileID: 1174809447}

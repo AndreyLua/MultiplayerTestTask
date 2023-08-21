@@ -8,7 +8,6 @@ public class PlayerMovementSystem : MonoBehaviour
     public void Init(Player player)
     {
         _player = player;
-     
     }
 
     private void Update()
@@ -26,11 +25,7 @@ public class PlayerMovementSystem : MonoBehaviour
     private void RotatePlayer()
     {
         Quaternion rotateQuart = Quaternion.Euler(0,0,-Mathf.Atan2(_joystick.Direction.x, _joystick.Direction.y)*180/Mathf.PI);
- 
-
         _player.transform.rotation = rotateQuart;
-
-
     }
    
 }

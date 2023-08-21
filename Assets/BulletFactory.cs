@@ -1,18 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BulletFactory : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private Bullet _bulletPrefab;
+    
+    public Bullet Create(Vector2 startPosition, Vector2 direction, float damage)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Bullet bullet = Instantiate<Bullet>(_bulletPrefab);
+        bullet.transform.position = startPosition;
+        Quaternion rotateQuart = Quaternion.Euler(0, 0, -Mathf.Atan2(direction.x, direction.y) * 180 / Mathf.PI);
+        bullet.transform.rotation = rotateQuart;
+        bullet.Init(damage, direction);
+        return bullet;
     }
 }

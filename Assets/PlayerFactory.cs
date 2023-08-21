@@ -16,7 +16,8 @@ public class PlayerFactory : MonoBehaviour
     public Player Create(Vector2 position, PlayerBodyView bodyView)
     {
         Player player = Instantiate<Player>(_playerPrefab);
-        player.PlayerView.SetBodyView(bodyView);
+        PlayerBodyView playerbodyView = Instantiate<PlayerBodyView>(bodyView);
+        player.PlayerView.SetBodyView(playerbodyView);
         player.transform.position = position;
         return player;
     }

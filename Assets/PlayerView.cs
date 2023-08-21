@@ -10,7 +10,11 @@ public class PlayerView : MonoBehaviour
 
     public void SetBodyView(PlayerBodyView bodyView)
     {
+        Destroy(_body.gameObject);
         _body = bodyView;
+        _body.transform.parent = gameObject.transform;
+        _body.transform.position = gameObject.transform.position;
+      
     }
 }
 

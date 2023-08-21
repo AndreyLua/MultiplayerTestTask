@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 086ec9588285a2142ba2970828fc618d, type: 3}
   m_Name: PlayerBodyViewsConfig
   m_EditorClassIdentifier: 
-  _bodyViews: []
+  _bodyViews:
+  - {fileID: -4093666741036074766, guid: cde2311aa41e100479ea39720b767932, type: 3}
+  - {fileID: -7357001510709680977, guid: 1077424427accae4398d6d7a46b5754b, type: 3}
+  - {fileID: -5934527190513237167, guid: c1e5923062a9d67439f3eb6217d38707, type: 3}
+  - {fileID: 1648236086376283727, guid: e18191e6dc4c4a64eb632042560dbb02, type: 3}

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MapBuilder : MonoBehaviour
+public class MapTileBuilder : MonoBehaviour
 {
     [SerializeField] private MapTile _mapTile;
 

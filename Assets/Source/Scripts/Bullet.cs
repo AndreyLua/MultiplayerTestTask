@@ -24,7 +24,7 @@ public class Bullet : MonoBehaviour, IMoveble
         gameObject.transform.position += (Vector3)(_direction * Time.deltaTime * _speed);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.TryGetComponent<IDamageble>(out IDamageble enemy))
             enemy.TakeDamage(_damage);

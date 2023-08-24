@@ -51,8 +51,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d899d8367c6b7341b57a7b4e0d93e95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerFactory: {fileID: 0}
-  _moneyStorage: {fileID: 0}
 --- !u!114 &6948320338433416104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65,7 +63,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdde0724ac052fc44a92d04295fc95b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _joystick: {fileID: 0}
 --- !u!114 &8614641408597113024
 MonoBehaviour:
   m_ObjectHideFlags: 0

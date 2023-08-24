@@ -2,9 +2,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour, IMoveble, IAttack, IDamageble, ICollector
 {
-    [SerializeField] private PlayerSkinFactory _playerFactory;
-    [SerializeField] private MoneyStorage _moneyStorage;
-
+    private MoneyStorage _moneyStorage;
     private Health _health;
    
     private HealthView _healthView;
@@ -24,13 +22,18 @@ public class Player : MonoBehaviour, IMoveble, IAttack, IDamageble, ICollector
     private void Awake()
     {
         _playerView = gameObject.GetComponentInChildren<PlayerView>();
-        _playerView.SetBodyView(_playerFactory.Create());
-
         _healthView = gameObject.GetComponentInChildren<HealthView>();
 
         _health = new Health(10,10);
         _health.Damaged += OnDamaged;
     }
+
+    public void Init(PlayerBuilder playerBuilder)
+    {
+        _playerView.SetBodyView(playerBuilder.PlayerBodyView);
+        _moneyStorage = playerBuilder.MoneyStorage;
+    }
+
 
     private void OnDamaged()
     {

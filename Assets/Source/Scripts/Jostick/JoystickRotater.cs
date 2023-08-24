@@ -2,7 +2,12 @@
 
 public class JoystickRotater : MonoBehaviour
 {
-    [SerializeField] private FixedJoystick _joystick;
+    private Joystick _joystick;
+
+    private void Awake()
+    {
+        _joystick = FindObjectOfType<Joystick>();
+    }
 
     private void Update()
     {

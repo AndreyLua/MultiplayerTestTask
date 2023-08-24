@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Photon.Pun;
+using UnityEngine;
 
 public class Money : MonoBehaviour
 {
@@ -10,7 +11,12 @@ public class Money : MonoBehaviour
         if (collision.gameObject.TryGetComponent<ICollector>(out ICollector collector))
         {
             collector.TakeMoney(_value);
-            Destroy(gameObject);
+            PhotonView photonView = gameObject.GetComponent<PhotonView>();
+            if (photonView.IsMine)
+                PhotonNetwork.Destroy(photonView);
+            else
+                photonView.RPC("DeleteServerObject", RpcTarget.MasterClient, photonView.ViewID);
+
         }
     }
 }

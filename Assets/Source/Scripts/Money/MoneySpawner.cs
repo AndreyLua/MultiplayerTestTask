@@ -1,3 +1,4 @@
+using Photon.Pun;
 using UnityEngine;
 
 public class MoneySpawner : MonoBehaviour
@@ -7,12 +8,20 @@ public class MoneySpawner : MonoBehaviour
 
     private void Awake()
     {
+        if (PhotonNetwork.IsMasterClient)
+        {
+            SpawnMoney();
+        }
+    }
+
+    public void SpawnMoney()
+    {
         Vector3 scale = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height)) ;
 
         for (int i = 0; i < _count; i++)
         {
-            Money money = Instantiate<Money>(_moneyPrefab, gameObject.transform);
-            money.transform.position = new Vector3(Random.Range(-scale.x, scale.x), Random.Range(-scale.y, scale.y),0);
+            Vector3 startPosition = new Vector3(Random.Range(-scale.x, scale.x), Random.Range(-scale.y, scale.y), -1);
+            GameObject money = PhotonNetwork.Instantiate(_moneyPrefab.name, startPosition, Quaternion.identity);
         }         
     }
 }

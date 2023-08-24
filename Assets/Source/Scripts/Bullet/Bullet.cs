@@ -61,7 +61,7 @@ public class Bullet : MonoBehaviour
     private void TakeDamage(int idObject, float damage)
     {
         PhotonView photonView = PhotonView.Find(idObject);
-        if (photonView != null && photonView.IsMine)
+        if (photonView != null)
             photonView.GetComponent<IMultiplayerDamageble>().TakeDamage(damage);
     }
 }

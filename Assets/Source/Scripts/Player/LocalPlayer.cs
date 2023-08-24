@@ -35,6 +35,7 @@ public class LocalPlayer : MonoBehaviour, IMultiplayerMoveble, IAttack, IMultipl
 
         _health = new Health(10,10);
         _health.Damaged += OnDamaged;
+        _health.Died += OnDied;
     }
 
     public void Init(PlayerBuilder playerBuilder)
@@ -43,10 +44,14 @@ public class LocalPlayer : MonoBehaviour, IMultiplayerMoveble, IAttack, IMultipl
         _moneyStorage = playerBuilder.MoneyStorage;
     }
 
-
     private void OnDamaged()
     {
         _healthView.UpdateBar(_health);
+    }
+
+    private void OnDied()
+    {
+        PhotonNetwork.LeaveRoom();
     }
 
     public void TakeDamage(float damage)

@@ -12,11 +12,12 @@ public class Money : MonoBehaviour
         {
             collector.TakeMoney(_value);
             PhotonView photonView = gameObject.GetComponent<PhotonView>();
-            if (photonView.IsMine)
-                PhotonNetwork.Destroy(photonView);
-            else
-                photonView.RPC("DeleteServerObject", RpcTarget.MasterClient, photonView.ViewID);
-
+            PhotonMasterClient.DeleteMasterClientObject(photonView);
         }
+    }
+    [PunRPC]
+    private void DeleteServerObject(int idObject)
+    {
+        PhotonNetwork.Destroy(PhotonView.Find(idObject));
     }
 }

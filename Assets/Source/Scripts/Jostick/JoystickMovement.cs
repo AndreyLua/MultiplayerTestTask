@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class JoystickMovement : MonoBehaviour
 {
-    private IMovebleInServer _moveble;
+    private IMultiplayerMoveble _moveble;
     private Joystick _joystick;
 
     private void Awake()
     {
         _joystick = FindObjectOfType<Joystick>();
-        _moveble = gameObject.GetComponent<IMovebleInServer>();
+        _moveble = gameObject.GetComponent<IMultiplayerMoveble>();
     }
 
     private void Update()

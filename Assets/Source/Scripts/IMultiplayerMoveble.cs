@@ -1,6 +1,6 @@
 ﻿using Photon.Pun;
 
-public interface IMovebleInServer : IMoveble
+public interface IMultiplayerMoveble : IMoveble
 {
     public PhotonView PhotonView { get; }
 }

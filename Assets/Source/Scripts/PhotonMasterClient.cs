@@ -2,9 +2,11 @@
 
 public class PhotonMasterClient
 {
-    [PunRPC]
-    private void DeleteServerObject(int idObject)
+    public static void DeleteMasterClientObject(PhotonView photonView)
     {
-        PhotonNetwork.Destroy(PhotonView.Find(idObject));
+         if (photonView.IsMine)
+                PhotonNetwork.Destroy(photonView);
+            else
+                photonView.RPC("DeleteServerObject", RpcTarget.MasterClient, photonView.ViewID);
     }
 }

@@ -3,6 +3,5 @@
 public interface IMoveble
 {
     public float Speed { get; }
-    public Transform transform { get; }
-
+    public Rigidbody2D Rigidbody { get; }
 }

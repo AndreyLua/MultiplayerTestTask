@@ -9,8 +9,11 @@ public class PlayerAttack : MonoBehaviour
     private IAttack _attack;
     private bool _canAttack = true;
 
-    private void Awake()
+    public void Init(TMPButton button, BulletFactory bulletFactory)
     {
+        _button = button;
+        _bulletFactory = bulletFactory;
+
         _attack = gameObject.GetComponent<IAttack>();
         _button.Clicked += Attack;
     }

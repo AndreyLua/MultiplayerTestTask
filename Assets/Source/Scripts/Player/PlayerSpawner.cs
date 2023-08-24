@@ -4,8 +4,13 @@ using UnityEngine;
 public class PlayerSpawner : MonoBehaviour
 {
     [SerializeField] private MoneyStorage _moneyStorage;
-    [SerializeField] private PlayerSkinFactory _playerSkinFactory;
 
+    [SerializeField] private BulletFactory _bulletFactory;
+
+    [SerializeField] private Joystick _joystick;
+    [SerializeField] private TMPButton _fireButton;
+
+    [SerializeField] private PlayerSkinFactory _playerSkinFactory;
     [SerializeField] private Player _playerPrefab;
 
     private void Start()
@@ -18,11 +23,16 @@ public class PlayerSpawner : MonoBehaviour
 
         PlayerBuilder builder = new PlayerBuilder(_moneyStorage, _playerSkinFactory.Create());
 
+        PhotonView view = player.GetComponent<PhotonView>();
+
         player.GetComponent<Player>().Init(builder);
+
+        player.GetComponent<PlayerAttack>().Init(_fireButton, _bulletFactory);
+
+        player.GetComponentInChildren<JoystickRotater>().Init(_joystick, view);
     }
 
 }
-
 
 public class PlayerBuilder
 {

@@ -1,7 +1,11 @@
+using Photon.Pun;
 using UnityEngine;
 
-public class Player : MonoBehaviour, IMoveble, IAttack, IDamageble, ICollector
+public class Player : MonoBehaviour, IMovebleInServer, IAttack, IDamageble, ICollector
 {
+    private Rigidbody2D _rigidbody;
+    private PhotonView _photonView;
+
     private MoneyStorage _moneyStorage;
     private Health _health;
    
@@ -18,9 +22,14 @@ public class Player : MonoBehaviour, IMoveble, IAttack, IDamageble, ICollector
     public float Rate => _rate;
 
     public Vector2 Direction => _playerView.transform.rotation * Vector2.up;
+    public Rigidbody2D Rigidbody => _rigidbody;
+
+    public PhotonView PhotonView => _photonView;
 
     private void Awake()
     {
+        _photonView = gameObject.GetComponent<PhotonView>();
+        _rigidbody = gameObject.GetComponent<Rigidbody2D>();
         _playerView = gameObject.GetComponentInChildren<PlayerView>();
         _healthView = gameObject.GetComponentInChildren<HealthView>();
 

@@ -1,17 +1,21 @@
-﻿using UnityEngine;
+﻿using Photon.Pun;
+using UnityEngine;
 
 public class JoystickRotater : MonoBehaviour
 {
     private Joystick _joystick;
+    private PhotonView _photonView;
 
-    private void Awake()
+    public void Init(Joystick joystick, PhotonView photonView) 
     {
-        _joystick = FindObjectOfType<Joystick>();
+        _joystick = joystick;
+        _photonView = photonView;
     }
 
     private void Update()
     {
-        RotatePlayer();
+        if (_photonView.IsMine && _joystick!= null)
+            RotatePlayer();
     }
 
     private void RotatePlayer()

@@ -11,7 +11,7 @@ public class PlayerSpawner : MonoBehaviour
     [SerializeField] private TMPButton _fireButton;
 
     [SerializeField] private PlayerSkinFactory _playerSkinFactory;
-    [SerializeField] private Player _playerPrefab;
+    [SerializeField] private LocalPlayer _playerPrefab;
 
     private void Start()
     {
@@ -28,7 +28,7 @@ public class PlayerSpawner : MonoBehaviour
 
         PlayerBuilder builder = new PlayerBuilder(_moneyStorage, _playerSkinFactory.Create());
 
-        player.GetComponent<Player>().Init(builder);
+        player.GetComponent<LocalPlayer>().Init(builder);
 
         player.GetComponent<PlayerAttack>().Init(_fireButton, _bulletFactory);
     }

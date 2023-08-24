@@ -1,7 +1,7 @@
 using Photon.Pun;
 using UnityEngine;
 
-public class Player : MonoBehaviour, IMultiplayerMoveble, IAttack, IMultiplayerDamageble, ICollector
+public class LocalPlayer : MonoBehaviour, IMultiplayerMoveble, IAttack, IMultiplayerDamageble, ICollector
 {
     private Rigidbody2D _rigidbody;
     private PhotonView _photonView;

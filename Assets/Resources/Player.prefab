@@ -161,6 +161,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8339381294796391814}
     m_Modifications:
+    - target: {fileID: 247518656521266809, guid: 4135b7eb5bd18dc469cf80747d038f99, type: 3}
+      propertyPath: ObservedComponents.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1315245892240570289, guid: 4135b7eb5bd18dc469cf80747d038f99, type: 3}
       propertyPath: m_LocalPosition.z
       value: -1
@@ -221,7 +225,8 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4329617514660960825, guid: 4135b7eb5bd18dc469cf80747d038f99, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4135b7eb5bd18dc469cf80747d038f99, type: 3}
 --- !u!4 &6291772796997524154 stripped
 Transform:

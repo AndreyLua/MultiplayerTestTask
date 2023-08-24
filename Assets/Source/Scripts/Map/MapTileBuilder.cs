@@ -10,6 +10,8 @@ public class MapTileBuilder : MonoBehaviour
     {
         Vector3 scale  = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height))*2;
 
+        gameObject.transform.position = new Vector3(-scale.x/2, scale.y / 2,-0.04f);
+
         for (int i=0; i< (int)(scale.x/_sizeTile); i++)
         {
             for (int j = 0; j < (int)(scale.y / _sizeTile)+1; j++)

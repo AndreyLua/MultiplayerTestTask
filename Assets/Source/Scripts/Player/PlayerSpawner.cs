@@ -15,23 +15,23 @@ public class PlayerSpawner : MonoBehaviour
 
     private void Start()
     {
+        Spawn();
+    }
+
+    private void Spawn()
+    {
         Vector3 scaleScreen = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height));
 
-        Vector3 startPosition = new Vector3(Random.Range(-scaleScreen.x, scaleScreen.x), Random.Range(-scaleScreen.y, scaleScreen.y),0);
+        Vector3 startPosition = new Vector3(Random.Range(-scaleScreen.x, scaleScreen.x), Random.Range(-scaleScreen.y, scaleScreen.y), 0);
 
-        GameObject player = PhotonNetwork.Instantiate(_playerPrefab.name, startPosition, Quaternion.identity);
+        GameObject player = (GameObject)PhotonNetwork.Instantiate(_playerPrefab.name, startPosition, Quaternion.identity);
 
         PlayerBuilder builder = new PlayerBuilder(_moneyStorage, _playerSkinFactory.Create());
-
-        PhotonView view = player.GetComponent<PhotonView>();
 
         player.GetComponent<Player>().Init(builder);
 
         player.GetComponent<PlayerAttack>().Init(_fireButton, _bulletFactory);
-
-        player.GetComponentInChildren<JoystickRotater>().Init(_joystick, view);
     }
-
 }
 
 public class PlayerBuilder

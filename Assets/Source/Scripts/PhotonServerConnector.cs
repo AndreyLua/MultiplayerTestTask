@@ -8,6 +8,7 @@ public class PhotonServerConnector : MonoBehaviourPunCallbacks
     private void Awake()
     {
         PhotonNetwork.ConnectUsingSettings();
+        PhotonNetwork.AutomaticallySyncScene = true;
     }
 
     public override void OnConnectedToMaster()

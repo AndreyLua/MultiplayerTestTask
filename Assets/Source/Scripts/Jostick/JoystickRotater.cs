@@ -6,10 +6,10 @@ public class JoystickRotater : MonoBehaviour
     private Joystick _joystick;
     private PhotonView _photonView;
 
-    public void Init(Joystick joystick, PhotonView photonView) 
+    private void Awake()
     {
-        _joystick = joystick;
-        _photonView = photonView;
+        _joystick = FindObjectOfType<Joystick>();
+        _photonView = gameObject.GetComponentInParent<PhotonView>();
     }
 
     private void Update()

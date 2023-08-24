@@ -26,7 +26,9 @@ public class PlayerSpawner : MonoBehaviour
 
         GameObject player = (GameObject)PhotonNetwork.Instantiate(_playerPrefab.name, startPosition, Quaternion.identity);
 
-        PlayerBuilder builder = new PlayerBuilder(_moneyStorage, _playerSkinFactory.Create());
+        PlayerBodyView playerBodyView = _playerSkinFactory.Create();
+
+        PlayerBuilder builder = new PlayerBuilder(_moneyStorage, playerBodyView);
 
         player.GetComponent<LocalPlayer>().Init(builder);
 

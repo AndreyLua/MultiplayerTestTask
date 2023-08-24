@@ -7,8 +7,17 @@ public class PlayerSkinFactory : MonoBehaviour
     public PlayerBodyView Create()
     {
         int LengthBodyViews = _playerBodyViewsConfig.BodyViews.Length;
-        PlayerBodyView bodyView = _playerBodyViewsConfig.BodyViews[Random.Range(0, LengthBodyViews)];
+        int index = Random.Range(0, LengthBodyViews);
+     
+        return Create(index);
+    }
+
+    public PlayerBodyView Create(int index)
+    {
+        PlayerBodyView bodyView = _playerBodyViewsConfig.BodyViews[index];
+
         PlayerBodyView playerbodyView = Instantiate<PlayerBodyView>(bodyView);
+        playerbodyView.NumberBodyView = index;
 
         return playerbodyView;
     }

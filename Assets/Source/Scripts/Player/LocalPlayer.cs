@@ -42,6 +42,9 @@ public class LocalPlayer : MonoBehaviour, IMultiplayerMoveble, IAttack, IMultipl
     {
         _playerView.SetBodyView(playerBuilder.PlayerBodyView);
         _moneyStorage = playerBuilder.MoneyStorage;
+
+        if (_photonView.IsMine)
+            _photonView.RPC("InitBodyView", RpcTarget.OthersBuffered, playerBuilder.PlayerBodyView.NumberBodyView);
     }
 
     private void OnDamaged()
@@ -63,4 +66,12 @@ public class LocalPlayer : MonoBehaviour, IMultiplayerMoveble, IAttack, IMultipl
     {
         _moneyStorage.Add(value);
     }
+
+    [PunRPC]
+    private void InitBodyView(int index)
+    {
+        PlayerSkinFactory playerSkinFactory = FindObjectOfType<PlayerSkinFactory>();
+        _playerView.SetBodyView(playerSkinFactory.Create(index));
+    }
+
 }
